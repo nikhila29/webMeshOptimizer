@@ -1,0 +1,88 @@
+.web-mesh-optimizer {
+	width: 100%;
+	height: 100%;
+	min-height: 500px;
+	position: relative;
+	overflow: hidden;
+
+	/* Close button for popup mode */
+	.wmo-close-btn {
+		position: absolute;
+		top: 16px;
+		right: 16px;
+		z-index: 100;
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		color: #000;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.2s ease;
+		backdrop-filter: blur(10px);
+
+		&:hover {
+			background: rgba(255, 255, 255, 0.2);
+			border-color: rgba(255, 255, 255, 0.3);
+			transform: scale(1.05);
+		}
+
+		svg {
+			width: 20px;
+			height: 20px;
+		}
+	}
+}
+
+/* Three.js canvas container - offset to account for control panel */
+.canvas-container {
+	position: absolute;
+	top: 0;
+	left: 320px; /* control panel width (280px) + left margin (20px) + gap (20px) */
+	right: 0;
+	height: 100%;
+	z-index: 1;
+}
+
+.canvas-container canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+/* Responsive canvas offset matching control panel breakpoints */
+@media (min-width: 1440px) {
+	.canvas-container {
+		left: 364px; /* panel 320px + left 20px + gap 24px */
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+	.canvas-container {
+		left: 316px; /* panel 280px + left 20px + gap 16px */
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	.canvas-container {
+		left: 290px; /* panel 260px + left 15px + gap 15px */
+	}
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+	.canvas-container {
+		left: 260px; /* panel 240px + left 10px + gap 10px */
+	}
+}
+
+@media (max-width: 575px) {
+	/* Mobile: panel is at bottom, canvas takes full width */
+	.canvas-container {
+		left: 0;
+		bottom: 60vh; /* leave space for bottom panel */
+		height: auto;
+	}
+}
